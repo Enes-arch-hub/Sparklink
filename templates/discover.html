@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Discover</title>
+<style>
+body{font-family:Arial;background:#f2f2f2;text-align:center;}
+.container{width:320px;margin:auto;margin-top:40px;position:relative;}
+.card{width:320px;background:white;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.2);position:absolute;padding-bottom:15px;transition:0.3s;display:none;}
+.card img{width:100%;height:300px;object-fit:cover;border-top-left-radius:10px;border-top-right-radius:10px;}
+.info{padding:10px;}
+.buttons{margin-top:380px;}
+button{padding:10px 25px;margin:10px;border:none;border-radius:30px;font-size:18px;cursor:pointer;}
+.like{background:#4CAF50;color:white;}
+.skip{background:#f44336;color:white;}
+</style>
+</head>
+<body>
+
+<h1>Discover People</h1>
+
+<div class="container">
+
+{% for user in users %}
+<div class="card" id="card{{ user.id }}">
+{% if user.profile_photo %}
+<img src="/static/uploads/{{ user.profile_photo }}">
+{% else %}
+<img src="https://via.placeholder.com/320x300">
+{% endif %}
+<div class="info">
+<h3>{{ user.name }}, {{ user.age }}</h3>
+<p>{{ user.location }}</p>
+<p>{{ user.bio }}</p>
+</div>
+</div>
+{% endfor %}
+
+</div>
+
+<div class="buttons">
+<button class="skip" onclick="skip()">❌ Skip</button>
+<button class="like" onclick="like()">❤️ Like</button>
+</div>
+
+<script>
+let users = [
+{% for user in users %}
+{{ user.id }},
+{% endfor %}
+]
+
+let index = users.length - 1
+
+function showNext(){
+    if(index < 0){ alert("No more profiles"); return }
+    for(let i=0;i<users.length;i++){
+        document.getElementById("card"+users[i]).style.display="none"
+        document.getElementById("card"+users[i]).style.transform=""
+    }
+    let card = document.getElementById("card"+users[index])
+    card.style.display="block"
+}
+
+function like(){
+    if(index < 0) return
+    let user = users[index]
+    window.location="/like/"+user
+}
+
+function skip(){
+    if(index < 0) return
+    let card = document.getElementById("card"+users[index])
+    card.style.transform="translateX(-400px) rotate(-20deg)"
+    index--
+    setTimeout(showNext,300)
+}
+
+showNext()
+</script>
+
+<br><br>
+<a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>

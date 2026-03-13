@@ -1,0 +1,25 @@
+<h2>Your Matches ❤️</h2>
+
+{% for match in matches %}
+
+<div>
+
+<h3>{{ match[1] }}</h3>
+
+<p>{{ match[7] }}</p>
+
+{% if match[8] %}
+<img src="/static/uploads/{{ match[8] }}" width="150">
+{% endif %}
+
+<br>
+
+<a href="/chat/{{ match[0] }}">Open Chat</a>
+
+</div>
+
+<hr>
+
+{% endfor %}
+
+<a href="/dashboard">Back</a>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Profile - SparkLink</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>Create / Edit Your Profile</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="number" name="age" placeholder="Your Age" required>
+
+<select name="gender" required>
+<option value="">Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+<option value="Other">Other</option>
+</select>
+
+<input type="text" name="location" placeholder="City, Country" required>
+
+<textarea name="bio" placeholder="Write something about yourself..." required></textarea>
+
+<label>Upload Profile Photo:</label>
+<input type="file" name="profile_photo" accept="image/*" required>
+
+<button type="submit">Save Profile</button>
+
+</form>
+
+<a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>
