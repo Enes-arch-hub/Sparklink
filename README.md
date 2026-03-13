@@ -1,4 +1,4 @@
 https://sparklink-xpy9.onrender.com
 
 
-live on render.
+responsive for both PC and Mobile Phones.
