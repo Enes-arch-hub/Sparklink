@@ -9,6 +9,4 @@ Sparklink is a platform designed to connect users through smart digital solution
 - Modern interface
 - Scalable architecture
 
-
-
 responsive for both PC and Mobile Phones.
